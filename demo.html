@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Field Translator demo</title>
+  <style>
+    :root {
+      font-family: "Segoe UI", system-ui, sans-serif;
+      color: #1f2937;
+      background: #eef3fb;
+    }
+    body {
+      max-width: 720px;
+      margin: 40px auto;
+      padding: 0 20px 60px;
+    }
+    h1 { margin-bottom: 8px; }
+    p { color: #5b6777; }
+    form {
+      display: grid;
+      gap: 14px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(31, 58, 110, 0.08);
+    }
+    label { display: grid; gap: 6px; font-weight: 600; }
+    input, textarea, [contenteditable] {
+      font: 15px/1.5 inherit;
+      padding: 10px 12px;
+      border: 1px solid #d7deea;
+      border-radius: 10px;
+    }
+    textarea, [contenteditable] { min-height: 120px; }
+    [contenteditable] { background: #fff; }
+    button[type="submit"] {
+      justify-self: start;
+      border: 0;
+      background: #1a73e8;
+      color: #fff;
+      border-radius: 10px;
+      padding: 10px 16px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .saved { color: #0f9d58; font-weight: 700; display: none; }
+  </style>
+</head>
+<body>
+  <h1>ทดลอง Field Translator</h1>
+  <p>ลากคลุมข้อความในช่องด้านล่าง แล้วกดปุ่ม Translate ที่ลอยขึ้นมา — ข้อความจะถูกแทนที่ด้วยภาษาอังกฤษ</p>
+  <form>
+    <label>
+      หัวข้อ
+      <input id="title" value="ระบบนี้ใช้สำหรับบันทึกงานภาคสนามของล่าม" />
+    </label>
+    <label>
+      รายละเอียด
+      <textarea id="body">วันนี้ทีมล่ามเดินทางไปยังพื้นที่ห่างไกล เพื่อบันทึกคำศัพท์ท้องถิ่นและตรวจสอบความถูกต้องของคำแปลก่อนบันทึกลงระบบ</textarea>
+    </label>
+    <label>
+      บันทึกเพิ่มเติม (contenteditable)
+      <div id="note" contenteditable="true">กรุณาตรวจสอบชื่อสถานที่และคำเฉพาะก่อนกดบันทึก</div>
+    </label>
+    <button type="submit">Save</button>
+    <div class="saved" id="saved">Saved</div>
+  </form>
+  <script>
+    document.querySelector("form").addEventListener("submit", (event) => {
+      event.preventDefault();
+      document.getElementById("saved").style.display = "block";
+    });
+  </script>
+  <script src="content.js"></script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+#field-translator-host {
+  all: initial;
+  position: fixed !important;
+  z-index: 2147483647 !important;
+}
